@@ -1,7 +1,9 @@
 const covid19ImpactEstimator = (data) => {
-  let factor, days;
-  let impactCurrentlyinfected = data.reportedCases * 10;
-  let severeImpactCurrentlyinfected = data.reportedCases * 50;
+  let factor;
+  let
+    days;
+  const impactCurrentlyinfected = data.reportedCases * 10;
+  const severeImpactCurrentlyinfected = data.reportedCases * 50;
 
   if (data.periodType === 'days') {
     days = data.timeToElapse;
@@ -13,48 +15,43 @@ const covid19ImpactEstimator = (data) => {
     days = data.timeToElapse * 30;
     factor = 2 ** Math.round(days / 3);
   }
-  let impactInfestionsByRequestTime = impactCurrentlyinfected * factor;
-  let severeImpactInfestionsByRequestTime =
-    severeImpactCurrentlyinfected * factor;
+  const impactInfestionsByRequestTime = impactCurrentlyinfected * factor;
+  const severeImpactInfestionsByRequestTime = severeImpactCurrentlyinfected * factor;
 
-  let impactSevereCasesByRequestedTime =
-    (15 / 100) * impactInfestionsByRequestTime;
-  let severeImpactSevereCasesByRequestedTime =
-    (15 / 100) * severeImpactInfestionsByRequestTime;
+  const impactSevereCasesByRequestedTime = (15 / 100) * impactInfestionsByRequestTime;
+  const severeImpactSevereCasesByRequestedTime = (15 / 100) * severeImpactInfestionsByRequestTime;
 
-  let availableBed = data.totalHospitalBeds * (35 / 100);
-  let impactHospitalBedsByRequestedTime =
-    availableBed - impactSevereCasesByRequestedTime;
-  let severeImpactHospitalBedsByRequestedTime =
-    availableBed - severeImpactSevereCasesByRequestedTime;
+  const availableBed = data.totalHospitalBeds * (35 / 100);
+  const impactHospitalBedsByRequestedTime = availableBed - impactSevereCasesByRequestedTime;
+  // eslint-disable-next-line max-len
+  const severeImpactHospitalBedsByRequestedTime = availableBed - severeImpactSevereCasesByRequestedTime;
 
-  let impactCasesForICUByRequestedTime =
-    (5 / 100) * impactInfestionsByRequestTime;
-  let severeImpactCasesForICUByRequestedTime =
-    (5 / 100) * severeImpactInfestionsByRequestTime;
+  const impactCasesForICUByRequestedTime = (5 / 100) * impactInfestionsByRequestTime;
+  const severeImpactCasesForICUByRequestedTime = (5 / 100) * severeImpactInfestionsByRequestTime;
 
-  let impactCasesForVentilatorsByRequestedTime =
-    (2 / 100) * impactInfestionsByRequestTime;
-  let severeImpactCasesForVentilatorsByRequestedTime =
-    (2 / 100) * severeImpactInfestionsByRequestTime;
+  const impactCasesForVentilatorsByRequestedTime = (2 / 100) * impactInfestionsByRequestTime;
+  // eslint-disable-next-line max-len
+  const severeImpactCasesForVentilatorsByRequestedTime = (2 / 100) * severeImpactInfestionsByRequestTime;
 
-  let avgDailyIncomeInUSD = data.region.avgDailyIncomeInUSD;
-  let avgDailyIncomePopulation = data.region.avgDailyIncomePopulation;
+  const {
+    avgDailyIncomeInUSD
+  } = data.region;
+  const {
+    avgDailyIncomePopulation
+  } = data.region;
 
-  let impactDollarsInFlight =
-    impactInfestionsByRequestTime *
+  const impactDollarsInFlight = impactInfestionsByRequestTime *
     avgDailyIncomeInUSD *
     avgDailyIncomePopulation *
     days;
 
-  let severeImpactDollarsInFlight =
-    severeImpactInfestionsByRequestTime *
+  const severeImpactDollarsInFlight = severeImpactInfestionsByRequestTime *
     avgDailyIncomeInUSD *
     avgDailyIncomePopulation *
     days;
 
   return {
-    data: data,
+    data,
     impact: {
       currentlyInfected: impactCurrentlyinfected,
       infectionsByRequestedTime: impactInfestionsByRequestTime,
