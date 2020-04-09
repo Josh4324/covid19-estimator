@@ -18,14 +18,14 @@ const covid19ImpactEstimator = (data) => {
   const impactInfestionsByRequestTime = impactCurrentlyinfected * factor;
   const severeImpactInfestionsByRequestTime = severeImpactCurrentlyinfected * factor;
 
-  const impactSevereCasesByRequestedTime = Math.floor((15 / 100) * impactInfestionsByRequestTime);
+  const impactSevereCasesByRequestedTime = Math.trunc((15 / 100) * impactInfestionsByRequestTime);
   // eslint-disable-next-line max-len
-  const severeImpactSevereCasesByRequestedTime = Math.floor((15 / 100) * severeImpactInfestionsByRequestTime);
+  const severeImpactSevereCasesByRequestedTime = Math.trunc((15 / 100) * severeImpactInfestionsByRequestTime);
 
-  const availableBed = Math.floor(data.totalHospitalBeds * (35 / 100));
-  const impactHospitalBedsByRequestedTime = availableBed - impactSevereCasesByRequestedTime;
+  const availableBed = (data.totalHospitalBeds * (35 / 100));
+  const impactHospitalBedsByRequestedTime = Math.trunc(availableBed - impactSevereCasesByRequestedTime);
   // eslint-disable-next-line max-len
-  const severeImpactHospitalBedsByRequestedTime = availableBed - severeImpactSevereCasesByRequestedTime;
+  const severeImpactHospitalBedsByRequestedTime = Math.trunc(availableBed - severeImpactSevereCasesByRequestedTime);
 
   const impactCasesForICUByRequestedTime = Math.floor((5 / 100) * impactInfestionsByRequestTime);
   // eslint-disable-next-line max-len
@@ -70,21 +70,21 @@ const covid19ImpactEstimator = (data) => {
   };
 };
 
-/* const sample = {
+const sample = {
   region: {
     name: 'Africa',
     avgAge: 19.7,
-    avgDailyIncomeInUSD: 5,
-    avgDailyIncomePopulation: 0.71
+    avgDailyIncomeInUSD: 3,
+    avgDailyIncomePopulation: 0.79
   },
   periodType: 'days',
-  timeToElapse: 58,
-  reportedCases: 674,
-  population: 66622705,
-  totalHospitalBeds: 1380614
+  timeToElapse: 37,
+  reportedCases: 673,
+  population: 4216697,
+  totalHospitalBeds: 192126
 };
 
-console.log(covid19ImpactEstimator(sample)); */
+console.log(covid19ImpactEstimator(sample));
 
 // eslint-disable-next-line eol-last
-export default covid19ImpactEstimator;
+//export default covid19ImpactEstimator;
