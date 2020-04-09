@@ -22,7 +22,7 @@ const covid19ImpactEstimator = (data) => {
   // eslint-disable-next-line max-len
   const severeImpactSevereCasesByRequestedTime = Math.round((15 / 100) * severeImpactInfestionsByRequestTime);
 
-  const availableBed = Math.round(data.totalHospitalBeds * (35 / 100));
+  const availableBed = Math.floor(data.totalHospitalBeds * (35 / 100));
   const impactHospitalBedsByRequestedTime = availableBed - impactSevereCasesByRequestedTime;
   // eslint-disable-next-line max-len
   const severeImpactHospitalBedsByRequestedTime = availableBed - severeImpactSevereCasesByRequestedTime;
