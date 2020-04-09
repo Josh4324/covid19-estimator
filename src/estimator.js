@@ -84,4 +84,5 @@ const covid19ImpactEstimator = (data) => {
 
 console.log(covid19ImpactEstimator(sample)); */
 
+// eslint-disable-next-line eol-last
 export default covid19ImpactEstimator;
