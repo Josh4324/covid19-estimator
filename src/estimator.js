@@ -44,9 +44,9 @@ const covid19ImpactEstimator = (data) => {
   } = data.region;
 
   // eslint-disable-next-line max-len
-  const impactDollarsInFlight = impactInfestionsByRequestTime * avgDailyIncomeInUSD * avgDailyIncomePopulation * days;
+  const impactDollarsInFlight = +(impactInfestionsByRequestTime * avgDailyIncomeInUSD * avgDailyIncomePopulation * days).toFixed(2);
   // eslint-disable-next-line max-len
-  const severeImpactDollarsInFlight = severeImpactInfestionsByRequestTime * avgDailyIncomeInUSD * avgDailyIncomePopulation * days;
+  const severeImpactDollarsInFlight = +(severeImpactInfestionsByRequestTime * avgDailyIncomeInUSD * avgDailyIncomePopulation * days).toFixed(2);
 
   return {
     data,
@@ -71,21 +71,21 @@ const covid19ImpactEstimator = (data) => {
   };
 };
 
-/* const sample = {
+const sample = {
   region: {
     name: 'Africa',
     avgAge: 19.7,
-    avgDailyIncomeInUSD: 3,
-    avgDailyIncomePopulation: 0.79
+    avgDailyIncomeInUSD: 4,
+    avgDailyIncomePopulation: 0.73
   },
   periodType: 'days',
-  timeToElapse: 37,
-  reportedCases: 673,
-  population: 4216697,
-  totalHospitalBeds: 192126
+  timeToElapse: 38,
+  reportedCases: 2747,
+  population: 92931687,
+  totalHospitalBeds: 678874
 };
 
 console.log(covid19ImpactEstimator(sample));
- */
+
 // eslint-disable-next-line eol-last
-export default covid19ImpactEstimator;
+//export default covid19ImpactEstimator;
