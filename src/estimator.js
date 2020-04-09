@@ -23,6 +23,7 @@ const covid19ImpactEstimator = (data) => {
   const severeImpactSevereCasesByRequestedTime = Math.trunc((15 / 100) * severeImpactInfestionsByRequestTime);
 
   const availableBed = (data.totalHospitalBeds * (35 / 100));
+  // eslint-disable-next-line max-len
   const impactHospitalBedsByRequestedTime = Math.trunc(availableBed - impactSevereCasesByRequestedTime);
   // eslint-disable-next-line max-len
   const severeImpactHospitalBedsByRequestedTime = Math.trunc(availableBed - severeImpactSevereCasesByRequestedTime);
@@ -70,7 +71,7 @@ const covid19ImpactEstimator = (data) => {
   };
 };
 
-const sample = {
+/* const sample = {
   region: {
     name: 'Africa',
     avgAge: 19.7,
@@ -85,6 +86,6 @@ const sample = {
 };
 
 console.log(covid19ImpactEstimator(sample));
-
+ */
 // eslint-disable-next-line eol-last
-//export default covid19ImpactEstimator;
+export default covid19ImpactEstimator;
