@@ -19,6 +19,7 @@ const covid19ImpactEstimator = (data) => {
   const severeImpactInfestionsByRequestTime = severeImpactCurrentlyinfected * factor;
 
   const impactSevereCasesByRequestedTime = Math.round((15 / 100) * impactInfestionsByRequestTime);
+  // eslint-disable-next-line max-len
   const severeImpactSevereCasesByRequestedTime = Math.round((15 / 100) * severeImpactInfestionsByRequestTime);
 
   const availableBed = Math.round(data.totalHospitalBeds * (35 / 100));
@@ -27,8 +28,9 @@ const covid19ImpactEstimator = (data) => {
   const severeImpactHospitalBedsByRequestedTime = availableBed - severeImpactSevereCasesByRequestedTime;
 
   const impactCasesForICUByRequestedTime = Math.round((5 / 100) * impactInfestionsByRequestTime);
+  // eslint-disable-next-line max-len
   const severeImpactCasesForICUByRequestedTime = Math.round((5 / 100) * severeImpactInfestionsByRequestTime);
-
+  // eslint-disable-next-line max-len
   const impactCasesForVentilatorsByRequestedTime = Math.round((2 / 100) * impactInfestionsByRequestTime);
   // eslint-disable-next-line max-len
   const severeImpactCasesForVentilatorsByRequestedTime = Math.round((2 / 100) * severeImpactInfestionsByRequestTime);
