@@ -7,33 +7,33 @@ const covid19ImpactEstimator = (data) => {
 
   if (data.periodType === 'days') {
     days = data.timeToElapse;
-    factor = 2 ** Math.round(data.timeToElapse / 3);
+    factor = 2 ** Math.trunc(data.timeToElapse / 3);
   } else if (data.periodType === 'weeks') {
     days = data.timeToElapse * 7;
-    factor = 2 ** Math.round(days / 3);
+    factor = 2 ** Math.trunc(days / 3);
   } else {
     days = data.timeToElapse * 30;
-    factor = 2 ** Math.round(days / 3);
+    factor = 2 ** Math.trunc(days / 3);
   }
   const impactInfestionsByRequestTime = impactCurrentlyinfected * factor;
   const severeImpactInfestionsByRequestTime = severeImpactCurrentlyinfected * factor;
 
-  const impactSevereCasesByRequestedTime = Math.round((15 / 100) * impactInfestionsByRequestTime);
+  const impactSevereCasesByRequestedTime = Math.trunc((15 / 100) * impactInfestionsByRequestTime);
   // eslint-disable-next-line max-len
-  const severeImpactSevereCasesByRequestedTime = Math.round((15 / 100) * severeImpactInfestionsByRequestTime);
+  const severeImpactSevereCasesByRequestedTime = Math.trunc((15 / 100) * severeImpactInfestionsByRequestTime);
 
-  const availableBed = Math.round(data.totalHospitalBeds * (35 / 100));
+  const availableBed = Math.trunc(data.totalHospitalBeds * (35 / 100));
   const impactHospitalBedsByRequestedTime = availableBed - impactSevereCasesByRequestedTime;
   // eslint-disable-next-line max-len
   const severeImpactHospitalBedsByRequestedTime = availableBed - severeImpactSevereCasesByRequestedTime;
 
-  const impactCasesForICUByRequestedTime = Math.round((5 / 100) * impactInfestionsByRequestTime);
+  const impactCasesForICUByRequestedTime = Math.trunc((5 / 100) * impactInfestionsByRequestTime);
   // eslint-disable-next-line max-len
-  const severeImpactCasesForICUByRequestedTime = Math.round((5 / 100) * severeImpactInfestionsByRequestTime);
+  const severeImpactCasesForICUByRequestedTime = Math.trunc((5 / 100) * severeImpactInfestionsByRequestTime);
   // eslint-disable-next-line max-len
-  const impactCasesForVentilatorsByRequestedTime = Math.round((2 / 100) * impactInfestionsByRequestTime);
+  const impactCasesForVentilatorsByRequestedTime = Math.trunc((2 / 100) * impactInfestionsByRequestTime);
   // eslint-disable-next-line max-len
-  const severeImpactCasesForVentilatorsByRequestedTime = Math.round((2 / 100) * severeImpactInfestionsByRequestTime);
+  const severeImpactCasesForVentilatorsByRequestedTime = Math.trunc((2 / 100) * severeImpactInfestionsByRequestTime);
 
   const {
     avgDailyIncomeInUSD
