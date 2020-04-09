@@ -71,7 +71,7 @@ const covid19ImpactEstimator = (data) => {
   };
 };
 
-const sample = {
+/* const sample = {
   region: {
     name: 'Africa',
     avgAge: 19.7,
@@ -85,7 +85,7 @@ const sample = {
   totalHospitalBeds: 678874
 };
 
-console.log(covid19ImpactEstimator(sample));
+console.log(covid19ImpactEstimator(sample)); */
 
 // eslint-disable-next-line eol-last
-//export default covid19ImpactEstimator;
+export default covid19ImpactEstimator;
