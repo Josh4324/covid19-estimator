@@ -44,7 +44,7 @@ const covid19ImpactEstimator = (data) => {
   } = data.region;
 
   // eslint-disable-next-line max-len
-  const impactDollarsInFlight = +(impactInfestionsByRequestTime * avgDailyIncomeInUSD * avgDailyIncomePopulation * days).toFixed(2);
+  const impactDollarsInFlight = +((impactInfestionsByRequestTime * avgDailyIncomeInUSD * avgDailyIncomePopulation) / days).toFixed(2);
   // eslint-disable-next-line max-len
   const severeImpactDollarsInFlight = +((severeImpactInfestionsByRequestTime * avgDailyIncomeInUSD * avgDailyIncomePopulation) / days).toFixed(2);
 
