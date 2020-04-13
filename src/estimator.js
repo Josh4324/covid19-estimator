@@ -85,7 +85,7 @@ const covid19ImpactEstimator = (data) => {
   totalHospitalBeds: 678874
 };
 
-console.log(covid19ImpactEstimator(sample)); */
-
+console.log(covid19ImpactEstimator(sample));
+ */
 // eslint-disable-next-line eol-last
 export default covid19ImpactEstimator;
