@@ -28,13 +28,13 @@ const covid19ImpactEstimator = (data) => {
   // eslint-disable-next-line max-len
   const severeImpactHospitalBedsByRequestedTime = Math.trunc(availableBed - severeImpactSevereCasesByRequestedTime);
 
-  const impactCasesForICUByRequestedTime = Math.floor((5 / 100) * impactInfestionsByRequestTime);
+  const impactCasesForICUByRequestedTime = Math.trunc((5 / 100) * impactInfestionsByRequestTime);
   // eslint-disable-next-line max-len
-  const severeImpactCasesForICUByRequestedTime = Math.floor((5 / 100) * severeImpactInfestionsByRequestTime);
+  const severeImpactCasesForICUByRequestedTime = Math.trunc((5 / 100) * severeImpactInfestionsByRequestTime);
   // eslint-disable-next-line max-len
-  const impactCasesForVentilatorsByRequestedTime = Math.floor((2 / 100) * impactInfestionsByRequestTime);
+  const impactCasesForVentilatorsByRequestedTime = Math.trunc((2 / 100) * impactInfestionsByRequestTime);
   // eslint-disable-next-line max-len
-  const severeImpactCasesForVentilatorsByRequestedTime = Math.floor((2 / 100) * severeImpactInfestionsByRequestTime);
+  const severeImpactCasesForVentilatorsByRequestedTime = Math.trunc((2 / 100) * severeImpactInfestionsByRequestTime);
 
   const {
     avgDailyIncomeInUSD
